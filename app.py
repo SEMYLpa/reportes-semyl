@@ -282,18 +282,19 @@ def generar():
         story.append(g_table)
         story.append(Spacer(1, 10))
 
-        # 5. Observaciones y Recomendaciones
+        # 5. Observaciones y Recomendaciones (CORREGIDO: Sin rowHeights fijo)
         story.append(crear_banner_seccion("3. OBSERVACIONES TÉCNICAS Y RECOMENDACIONES"))
         obs_table_data = [
             [Paragraph("<b>OBSERVACIONES TÉCNICAS</b>", style_th_left), Paragraph("<b>RECOMENDACIONES</b>", style_th_left)],
             [Paragraph(obs_text or "(Sin observaciones)", style_td), Paragraph(rec_text or "(Sin recomendaciones)", style_td)]
         ]
-        obs_table = Table(obs_table_data, colWidths=[270, 270], rowHeights=[18, 80])
+        obs_table = Table(obs_table_data, colWidths=[270, 270])
         obs_table.setStyle(TableStyle([
             ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#2E75B6')),
             ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#D3D3D3')),
             ('VALIGN', (0,0), (-1,1), 'TOP'),
-            ('TOPPADDING', (0,0), (-1,-1), 4),
+            ('TOPPADDING', (0,0), (-1,-1), 6),
+            ('BOTTOMPADDING', (0,0), (-1,-1), 6),
         ]))
         story.append(obs_table)
         story.append(Spacer(1, 15))
